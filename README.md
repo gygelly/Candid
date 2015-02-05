@@ -102,3 +102,30 @@ Can.rescue = function () {
 ```
 
 ALT-IDEA: canDo could be a reactive var on the client side. You could do something like toast the error.
+
+
+### Whitelisting 
+
+Block all actions of a give type. 
+This can include actions from other packages. 
+This should be considered an extreme option and only used if you are sure you know what you are doing.
+
+
+```js
+//not implemented
+Can.settings.whitelistDB = false
+
+//not implemented
+Can.settings.whitelistClient = false
+
+//Method whitelisting may cause problems with other packages or even meteor core.
+//Depending on package load order expect results to be unpredictable.
+//Only methods defined after this package will be whitelisted (I think...)
+//while I don't recommend it, it is available to you.
+Can.settings.whitelistMethod = false
+
+//not implemented
+Can.settings.whitelistHTTP = false
+```
+
+
