@@ -76,7 +76,7 @@ TODO: limit actions to the following list
 
 ### targets
 
-* Methods! (via _.wrap)
+* Methods! (via `_.wrap`, dependent on `this.connection`, server calls will not fire authorize)
 * TODO: gen allow/deny 
 * TODO: use _getCollectionName() for cursors
 * TODO: use _getCollectionName() for findOne

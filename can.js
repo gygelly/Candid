@@ -1,13 +1,16 @@
 Can = {
-  _can: [],
+  _doables: [],
   _run: function (user) {
     var self = this;
     self.inst = new instanceProto(user)
-    Can._can.forEach(function (canInstance) {
+    Can._doables.forEach(function (canInstance) {
       canInstance.call(self.inst)
     })
   },
-  can: function (action, subject, shout) {
+  do: function (func) {
+    Can._doables.push(func)
+  },
+  _validate: function (action, subject) {
     var self = this;
     if (!self.inst.rules[subject]) {
       return false;
@@ -17,11 +20,21 @@ Can = {
     }
     return self.inst.rules[subject][action]()
   },
-  cannot: function (action, subject, shout) {
-    return !this.can(action, subject, shout)
+  can: function (action, subject) {
+    return this._validate(action, subject)
   },
-  do: function (func) {
-    Can._can.push(func)
+  cannot: function (action, subject) {
+    return !this._validate(action, subject)
+  },
+  authorize: function (action, subject) {
+    if (this._validate(action, subject)) {
+      return true;
+    } else {
+      throw new Meteor.Error("permission-denied", "Permission Denied");
+    }
+  },
+  authorized: function (action, subject) {
+    return this._validate(action, subject);
   }
 }
 
