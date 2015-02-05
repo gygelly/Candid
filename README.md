@@ -5,11 +5,13 @@ This is a work in progress and is not usable quite yet.
 
 CanDo is a full permissions layer for Meteor JS, inspired by Rails CanCan but adapted to Meteor!
 
-### do
+### Rules: the dos and don'ts
+
+Define once (lib) do anywhere
 
 ```js
 Can.define(function () {
-  this.user 
+  this.user //always the current user; client or server, undefined if none
   this.do( 'action', target, callback )
   this.dont( 'action', target, callback )
 })
@@ -25,8 +27,6 @@ Can.cannot( 'action', target )
 //passive authentication, returns boolean
 
 /*** client, method, rest, get, post, put, delete ***/
-
-TODO: create these helpers and add exception logic
 
 Can.authorize( 'action', target ) 
 //authorization, throws exception on failure
