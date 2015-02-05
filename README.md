@@ -65,10 +65,9 @@ TODO: limit actions to the following list
   * remove
 
 * authorize/authorized
-  * all
   * client
   * method
-  * rest
+  * http
   * get
   * post
   * put

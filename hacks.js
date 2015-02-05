@@ -1,12 +1,12 @@
 // Carefully wrap Meteor.methods with CanDo. 
 // This should not break methods or any other hacks.
 Meteor.methods = _.wrap(Meteor.methods, function () {
-  var func = Array.prototype.shift.apply(arguments)
+  var methodsFunc = Array.prototype.shift.apply(arguments)
   var methods = arguments[0]
   _.keys(methods).forEach(function (method) {
     methods[method] = _.wrap(methods[method], function () {
       var self = this;
-      if (!self.connection) { 
+      if (!self.connection && Meteor.isServer) { 
         func = Array.prototype.shift.apply(arguments)
         return func.apply(self, arguments)
       } else {
@@ -23,5 +23,5 @@ Meteor.methods = _.wrap(Meteor.methods, function () {
     })
   });
   arguments[0] = methods //if MDG adds to methods keep all args
-  func.apply(func, arguments)
+  methodsFunc.apply(func, arguments)
 })
