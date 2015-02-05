@@ -7,7 +7,7 @@ Can = {
       canInstance.call(self.inst)
     })
   },
-  do: function (func) {
+  define: function (func) {
     Can._doables.push(func)
   },
   _validate: function (action, subject) {

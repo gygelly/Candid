@@ -8,7 +8,7 @@ CanDo is a full permissions layer for Meteor JS, inspired by Rails CanCan but ad
 ### do
 
 ```js
-Can.do(function () {
+Can.define(function () {
   this.user 
   this.do( 'action', target, callback )
   this.dont( 'action', target, callback )
