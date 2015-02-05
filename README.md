@@ -3,6 +3,8 @@ CanDo
 
 This is a work in progress and is not usable quite yet.
 
+CanDo is a full permissions layer for Meteor JS, inspired by Rails CanCan but adapted to Meteor!
+
 ### do
 
 ```js
@@ -17,20 +19,38 @@ Can.do(function () {
 
 ```js
 /*** insert, read, update, remove ***/
-can( 'action', target )
+Can.can( 'action', target )
 //active authentication, returns boolean
-cannot( 'action', target )
+Can.cannot( 'action', target )
 //passive authentication, returns boolean
 
 /*** client, method, rest, get, post, put, delete ***/
 
 TODO: create these helpers and add exception logic
 
-authorize( 'action', target ) 
+Can.authorize( 'action', target ) 
 //authorization, throws exception on failure
 
-authorized( 'action', target ) 
+Can.authorized( 'action', target ) 
 //routing/method authentication, returns boolean
+```
+
+```html
+
+<!-- TODO: all of these.... -->
+
+{{#if can 'action' target}}
+  ...
+{{/if}}
+
+{{#if cannot 'action' target}}
+  ...
+{{/if}}
+
+{{#if authorized 'action' target}}
+  ...
+{{/if}}
+
 ```
 
 ### actions
