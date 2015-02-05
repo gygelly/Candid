@@ -23,6 +23,9 @@ cannot( 'action', target )
 //passive authentication, returns boolean
 
 /*** client, method, rest, get, post, put, delete ***/
+
+TODO: create these helpers and add exception logic
+
 authorize( 'action', target ) 
 //authorization, throws exception on failure
 
@@ -31,6 +34,8 @@ authorized( 'action', target )
 ```
 
 ### actions
+
+TODO: limit actions to the following list
 
 * can/cannot
   * all
@@ -51,20 +56,23 @@ authorized( 'action', target )
 
 ### targets
 
-Methods! (via _.wrap)
-
-TODO: gen allow/deny 
-TODO: use _getCollectionName() for cursors
-TODO: use _getCollectionName() for findOne
-TODO: use _name for Collections
-TODO: Routing
+* Methods! (via _.wrap)
+* TODO: gen allow/deny 
+* TODO: use _getCollectionName() for cursors
+* TODO: use _getCollectionName() for findOne
+* TODO: use _name for Collections
+* TODO: Routing
 
 ### Routes
+
+TODO: all of this...
 
 routes create a Can iron:router hook
 It should hook for each route and based on name do an optional redirect to permission denied
 
 ### Error catching 
+
+TODO: all of this...
 
 If authorize throw an error, provide a way to catch this error client side
 
