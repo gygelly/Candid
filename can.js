@@ -1,29 +1,24 @@
 Can = {
   _can: [],
   _run: function (user) {
-    Rule.rules = {};
-    var inst = new instanceProto(user)
+    var self = this;
+    self.inst = new instanceProto(user)
     Can._can.forEach(function (canInstance) {
-      canInstance.call(inst)
+      canInstance.call(self.inst)
     })
   },
   can: function (action, subject, shout) {
-    if (!Rule.rules[subject]) {
+    var self = this;
+    if (!self.inst.rules[subject]) {
       return false;
     }
-    if (!Rule.rules[subject][action]) {
+    if (!self.inst.rules[subject][action]) {
      return false;
     }
-    return Rule.rules[subject][action]()
+    return self.inst.rules[subject][action]()
   },
   cannot: function (action, subject, shout) {
-    if (!Rule.rules[subject]) {
-      return true;
-    }
-    if (!Rule.rules[subject][action]) {
-     return true;
-    }
-    return !Rule.rules[subject][action]()
+    return !this.can(action, subject, shout)
   },
   do: function (func) {
     Can._can.push(func)
@@ -34,13 +29,12 @@ var instanceProto = function (user) {
   var self = this;
   self.user = user
   self.rules = {}
-  self.can = function (action, subject, conditions) {
+  self.do = function (action, subject, conditions) {
     Rule.new(self.rules, true, action, subject, conditions)
   }
-  self.cannot = function (action, subject, conditions) {
+  self.dont = function (action, subject, conditions) {
     Rule.new(self.rules, false, action, subject, conditions)
   }
-  console.log(self)
   return self;
 }
 

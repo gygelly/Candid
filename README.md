@@ -8,8 +8,8 @@ This is a work in progress and is not usable quite yet.
 ```js
 Can.do(function () {
   this.user 
-  this.can( 'action', target, callback )
-  this.cannot( 'action', target, callback )
+  this.do( 'action', target, callback )
+  this.dont( 'action', target, callback )
 })
 ```
 
