@@ -73,13 +73,17 @@ The user will return the current user and the current document.
 The subject must be a string representing the method name. 
 
 ### Client Routing in more detail  
-For configuration see [#routes](/#routes)
+For configuration see [#routes](#routes)
+
 The subject must be a string representing the route name. (if `url =/foo/bar` -> `name = foo.bar`)
+
 The condition and user functions doc will be the this.params from iron:router
 
 ### REST Routing in more detail  
-For configuration see [#routes](/#routes)
+For configuration see [#routes](#routes)
+
 The subject must be a string representing the route name. `/foo/bar` `foo.bar`
+
 The condition and user functions doc will be the this.params from iron:router
 
 ###### NOTE: Other then methods, all routing depends on iron:router. 
