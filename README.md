@@ -1,7 +1,7 @@
 Candid
 ===============
 
-This is a work in progress and is not usable quite yet.
+This is a work in progress and is not tested but it is usable.
 
 This is a Candid permissions layer for Meteor JS, inspired by Rails CanCan but adapted to Meteor!
 
@@ -51,13 +51,11 @@ Can.authorized( 'action', 'subject' )
 
 ```html
 
-<!-- TODO: all of these.... -->
-
-{{#if can 'action' target}}
+{{#if can 'action' target condition}}
   ...
 {{/if}}
 
-{{#if authorized 'action' target}}
+{{#if authorized 'action' target condition}}
   ...
 {{/if}}
 
@@ -90,11 +88,12 @@ Can.authorized( 'action', 'subject' )
 
 ### Routes
 
-Router.plugin('candidHook'); 
+`Router.plugin('candidHook', options);`
 
-Currently it throws a permission denied exception if no rules passed.
-
-TODO: add an optional redirect to permission denied template
+Currently there is only one option: `permissionDeniedTemplate: 'permissionDenied'`
+If the permissionDeniedTemplate template is defined it will render it on failed client routes.
+If it is not defined it will throw a "permission-denied' error. 
+Server routes always throw 'permission-denied' errors.
 
 ### Whitelisting 
 
