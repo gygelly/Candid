@@ -50,9 +50,6 @@ Can.can( 'action', subject )
 
 /*** client, method, rest, get, post, put, delete ***/
 
-Can.authorize( 'action', 'subject' ) 
-//authorization, throws exception on failure
-
 Can.authorized( 'action', 'subject' ) 
 //routing/method authentication, returns boolean
 ```
@@ -94,33 +91,20 @@ Can.authorized( 'action', 'subject' )
 * Methods! (via `_.wrap`, dependent on `this.connection`, server calls will not fire authorize)
 * Automatically generate allow/deny for collections
 * TODO: use _getCollectionName() for findOne
-* TODO: Routing
+* Routing
 
 ### Routes
 
-TODO: all of this...
+Router.plugin('candidHook'); 
 
-routes create a Can iron:router hook
-It should hook for each route and based on name do an optional redirect to permission denied
+Currently it throws a permission denied exception if no rules passed.
 
-### Error catching 
-
-TODO: all of this...
-
-If authorize throw an error, provide a way to catch this error client side. This is also assuming you are not using an iron:router hook.
-
-```js
-Can.rescue = function () {
-  //do something intelligent
-};
-```
-
+TODO: add an optional redirect to permission denied
 
 ### Whitelisting 
 
 Block all actions of a give type. 
-This can include actions from other packages. 
-This should be considered an extreme option and only used if you are sure you know what you are doing.
+This can include actions from other packages so I would recommend caution when using theses.
 
 
 #### Can.settings.DbDeny = false
@@ -134,7 +118,7 @@ You will have to create your own allows for all your collections.
 Candid will **only** create deny for the rules (dos) you have defined.
 
 #### Can.settings.whitelistClient = false
-not implemented
+Will catch all routes. 
 
 #### Can.settings.whitelistMethod = false
 Method whitelisting may cause problems with other packages or even meteor core.
@@ -143,5 +127,5 @@ Only methods defined after this package will be whitelisted (I think...)
 while I don't recommend it, it is available to you.
 
 #### Can.settings.whitelistHTTP = false
-not implemented
+Will catch all HTTP routes with method == ['get', 'post', 'put', 'delete']
 
