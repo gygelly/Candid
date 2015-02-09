@@ -34,17 +34,17 @@ Can.do({
 ```
 #### actions
 
-* can/cannot
-  * db
+* Database (can)
+  * db (will create the rule for all DB ops) 
   * insert
   * read
   * update
   * remove
 
-* authorize/authorized
+* Routing (authorized)
   * client
   * method
-  * http
+  * http (will create the rules for all REST ops)
   * get
   * post
   * put
