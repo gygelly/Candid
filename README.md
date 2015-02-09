@@ -66,11 +66,17 @@ The following are all the actions currently available in Candid. You must keep t
 
 ### Database in more detail
 For these your subject must be a Mongo.Collection with a unique mongo collection name.
+
 The condition will return the current document.
+
 The user will return the current user and the current document.
 
 ### Methods in more detail  
 The subject must be a string representing the method name. 
+
+The condition will be the arguments given to the method.
+
+The user will return the current user and the current document.
 
 ### Routing in more detail  
 For configuration see [#routes](#routes)
@@ -79,9 +85,12 @@ For configuration see [#routes](#routes)
 
 The subject must be a string representing the route name (`url =/foo/bar` -> `name = foo.bar`).
 
-For the client he condition and user functions doc will be the this.params from iron:router. 
+For the client the condition and user functions doc will be the this.params from iron:router. 
 For the server it will be the this.request.
 
+For client the user will return the current user.
+
+For server the user will never return a user:
 No http actions will have the user object available to them and these rules will be all or nothing. 
 If you have a security solution to this let me know via a Github issue! 
 Please do not PR these solutions as I will require them to be add-ons. (Unless your MDG -_^)
