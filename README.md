@@ -3,7 +3,9 @@ Candid
 
 This is a work in progress and is not tested but it is usable.
 
-This is a Candid permissions layer for Meteor JS, inspired by Rails CanCan but adapted to Meteor!
+This is a Candid permissions layer for Meteor JS, inspired by Rails CanCan but adapted to Meteor! 
+Candid lets you define permission rules for your database, methods, and routes.
+Candid rules are declarative, programmatic, and assertive, or you know candid. 
 
 What you get for free:
 * Automatically generate allow/deny for collections 
@@ -128,7 +130,11 @@ TODO: not implemented
 
 ```js
 Can.did = function () {
-  //stuff here
+  this.action //the action attempted 
+  this.subject //the subject name (collection name for DB) 
+  this.condition //the given conditions (collection object for DB) 
+  this.user //the user if available 
+  this.success //true if the action was allowed by any rules
 }
 ```
 
@@ -163,7 +169,7 @@ You will have to create your own allows for all your collections.
 Candid will **only** create deny for the rules (dos) you have defined.
 
 #### Can.settings.whitelistClient = false
-Will catch all routes. 
+Will catch all client routes. 
 
 #### Can.settings.whitelistMethod = false
 Method whitelisting may cause problems with other packages or even meteor core.
