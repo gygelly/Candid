@@ -75,7 +75,7 @@ The subject must be a string representing the method name.
 ### Routing in more detail  
 For configuration see [#routes](#routes)
 
-###### NOTE: This depends on iron:router. HTTP currently only refers to ones defined via iron:router. 
+###### NOTE: This depends on iron:router. Server routes currently only refers to ones defined via iron:router. 
 
 The subject must be a string representing the route name (`url =/foo/bar` -> `name = foo.bar`).
 
