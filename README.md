@@ -14,14 +14,21 @@ What you get for free:
 
 ## API
 
-### Rules: the dos 
+### Can.do (Create your rules) 
 
-Define once (lib) do anywhere
+You can create Candid rules anywhere but I would recommend placing them all in `/lib/candid.js`.
+
+Can.do accepts an object for a rule definition. 
+Your action defines what the user can do, like a database update. 
+Your subject will ether be a string, like a method name, or a Mongo.Collection
+(Subjects must match their actions).
+You can define a condition to limit your rule, like does post.group === 'awesome'?
+Finally you can define the user function to check user permissions [alanning:roles](https://atmospherejs.com/alanning/roles) would be useful here.  
 
 ```js
 Can.do({
   action: String,
-  subject: String or Mongo.Collection instance
+  subject: String or Mongo.Collection instance 
   condition: function (doc) {
     //optional, runs before user
     //if defined must return true to continue
@@ -50,7 +57,7 @@ Can.do({
   * put
   * delete
 
-### Can.can and Can.authorized helpers
+### Can.can and Can.authorized (helpers)
 
 ```js
 /*** insert, read, update, remove ***/
@@ -74,7 +81,7 @@ Can.authorized( 'action', 'subject' )
 
 ```
 
-### Can.did: Full access logging
+### Can.did (Full access logging)
 
 You should have known this was coming...
 
