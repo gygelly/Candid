@@ -138,12 +138,11 @@ not implemented
 
 full access logging
 
+TODO: not implemented
+
 ```js
-Can.did('all', null, function (success) { //if the action was allowed
-  this.user
-  this.action
-  this.subjectName
-  this.condition
-})
+Can.did = function () {
+  //stuff here
+}
 
 ```
