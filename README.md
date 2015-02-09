@@ -22,14 +22,14 @@ Can.do accepts an object for a rule definition.
 * Your action defines what the user can do, like a database update. 
 * Your subject will ether be a string, like a method name, or a Mongo.Collection
 (Subjects must match their actions).
-* You can define a condition to limit your rule, like does post.group === 'awesome'?
-* Finally you can define the user function to check user permissions 
-[alanning:roles](https://atmospherejs.com/alanning/roles) would be useful here.  
+* You can define a condition to limit your rule, like does `post.group === 'awesome'`?
+* Finally you can define the user function to check user permissions, 
+[alanning:roles](https://atmospherejs.com/alanning/roles) could be useful here.  
 
 ```js
 Can.do({
   action: String,
-  subject: String or Mongo.Collection instance 
+  subject: String || Mongo.Collection instance 
   condition: function (doc) {
     //optional, runs before user
     //if defined must return true to continue
@@ -37,10 +37,15 @@ Can.do({
   user: function (user, doc) {
     //optional, if you have authentication or roles
     //if defined must return true to allow action
+    //if no user is logged in, user will be undefined
   }
 })
 ```
-#### actions
+###### NOTE: Do not define user if its not needed. If the user function is detected Candid will try to get the current user, which may trigger database operations.
+
+#### Possible Actions
+
+The following are all the actions currently available in Candid. You must keep them all lowercase (js does not have proper symbols).
 
 * Database (can)
   * db (will create the rule for all DB ops) 
@@ -50,13 +55,34 @@ Can.do({
   * remove
 
 * Routing (authorized)
-  * client
   * method
+  * client
   * http (will create the rules for all REST ops)
   * get
   * post
   * put
   * delete
+
+
+### Database in more detail
+For these your subject must be a Mongo.Collection with a unique mongo collection name.
+The condition will return the current document.
+The user will return the current user and the current document.
+
+### Methods in more detail  
+The subject must be a string representing the method name. 
+
+### Client Routing in more detail  
+For configuration see [#routes](/#routes)
+The subject must be a string representing the route name. (if `url =/foo/bar` -> `name = foo.bar`)
+The condition and user functions doc will be the this.params from iron:router
+
+### REST Routing in more detail  
+For configuration see [#routes](/#routes)
+The subject must be a string representing the route name. `/foo/bar` `foo.bar`
+The condition and user functions doc will be the this.params from iron:router
+
+###### NOTE: Other then methods, all routing depends on iron:router. 
 
 ### Can.can and Can.authorized (helpers)
 
