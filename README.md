@@ -75,6 +75,8 @@ The subject must be a string representing the method name.
 ### Routing in more detail  
 For configuration see [#routes](#routes)
 
+###### NOTE: This depends on iron:router. HTTP currently only refers to ones defined via iron:router. 
+
 The subject must be a string representing the route name (`url =/foo/bar` -> `name = foo.bar`).
 
 For the client he condition and user functions doc will be the this.params from iron:router. 
@@ -83,9 +85,6 @@ For the server it will be the this.request.
 No http actions will have the user object available to them and these rules will be all or nothing. 
 If you have a security solution to this let me know via a Github issue! 
 Please do not PR these solutions as I will require them to be add-ons. (Unless your MDG -_^)
-
-
-###### NOTE: Other then methods, all routing depends on iron:router. 
 
 ### Can.can and Can.authorized (helpers)
 
@@ -126,6 +125,9 @@ Can.did = function () {
 ## Configuration
 
 ### Routes
+
+
+###### NOTE: This depends on iron:router. If iron:router is not present no actions will be taken.
 
 `Router.plugin('candidHook', options);`
 
