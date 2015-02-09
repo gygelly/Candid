@@ -1,19 +1,26 @@
-CanDo
+Candid
 ===============
 
 This is a work in progress and is not usable quite yet.
 
-CanDo is a full permissions layer for Meteor JS, inspired by Rails CanCan but adapted to Meteor!
+This is a Candid permissions layer for Meteor JS, inspired by Rails CanCan but adapted to Meteor!
 
-### Rules: the dos and don'ts
+### Rules: the dos 
 
 Define once (lib) do anywhere
 
 ```js
-Can.define(function () {
-  this.user //always the current user; client or server, undefined if none
-  this.do( 'action', target, callback )
-  this.dont( 'action', target, callback )
+Can.do({
+  action: String,
+  subject: String or Mongo.Collection instance
+  condition: function (doc) {
+    //optional, runs before user
+    //if defined must return true to continue
+  },
+  user: function (user, doc) {
+    //optional, if you have authentication or roles
+    //if defined must return true to allow action
+  }
 })
 ```
 
@@ -23,8 +30,9 @@ Can.define(function () {
 /*** insert, read, update, remove ***/
 Can.can( 'action', target )
 //active authentication, returns boolean
-Can.cannot( 'action', target )
-//passive authentication, returns boolean
+
+//TODO: currently this will always fail: I still have not yet added the helper _getCollectionName to collection instances.
+
 
 /*** client, method, rest, get, post, put, delete ***/
 
@@ -58,7 +66,7 @@ Can.authorized( 'action', target )
 TODO: limit actions to the following list
 
 * can/cannot
-  * all
+  * db
   * insert
   * read
   * update
@@ -129,3 +137,17 @@ Can.settings.whitelistHTTP = false
 ```
 
 
+
+### did
+
+full access logging
+
+```js
+Can.did('all', null, function (success) { //if the action was allowed
+  this.user
+  this.action
+  this.subjectName
+  this.condition
+})
+
+```

@@ -1,29 +1,23 @@
 Package.describe({
-  name: 'can-do',
-  summary: ''
+  name: 'candid',
+  summary: 'A candid Permissions layer for Meteor JS'
 });
 
 Package.on_use(function (api) {
-   api.use('underscore');
+   api.use(['underscore', 'dburles:mongo-collection-instances']);
    
+   api.add_files([
+    'lib/can.js', 
+    'lib/rules.js',
+    'lib/startup.js',
+    'lib/methods.js'
+  ]);
 
-   /*
-    * Add files that should be used with this
-    * package.
-    */
-   api.add_files(['can.js', 'rules.js', 'hacks.js']);
-
-  /*
-   * Export global symbols.
-   *
-   * Example:
-   *  
-   */
    api.export(['Can', 'can', 'cannot']);
 });
 
 Package.on_test(function (api) {
-  api.use('can-do');
+  api.use('candid');
   api.use('tinytest');
   
   api.add_files('can-do_tests.js');

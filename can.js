@@ -1,29 +1,39 @@
 Can = {
-  _doables: [],
-  _run: function (user) {
+  _validate: function (action, subject, conditions) {
     var self = this;
-    self.inst = new instanceProto(user)
-    Can._doables.forEach(function (canInstance) {
-      canInstance.call(self.inst)
-    })
-  },
-  define: function (func) {
-    Can._doables.push(func)
-  },
-  _validate: function (action, subject) {
-    var self = this;
-    if (!self.inst.rules[subject]) {
+    if (!Rules[subject]) {
       return 2; //not found
     }
-    if (!self.inst.rules[subject][action]) {
+    if (!Rules[subject][action]) {
      return 2; //not found
     }
-    if (self.inst.rules[subject][action]()) {
+    if (self._execute(Rules[subject][action], conditions)) {
       return 0 //true
     } else {
       return 1 //false
     }
   },
+  _execute: function (rules, conditions) {
+    rules.forEach(function (rule) {
+      var match = true, allow = false;
+      if (rule.conditions) { 
+        if (!rule.conditions(conditions)) {
+          match = false;
+        }
+      }
+      if (match) {
+        if (rule.user) {
+          if (rule.user()) {
+            allow = true
+          }
+        } else {
+          allow = true
+        }
+      }
+      //did
+      return allow;
+    });
+  }
   can: function (action, subject) {
     var result = this._validate(action, subject)
     if (result == 0) {
@@ -94,12 +104,6 @@ Can = {
     if (result == 2 && httpArray.indexOf(action) != -1 ) {
       return !this.whitelistHTTP;
     }
-  },
-  settings: {
-    whitelistDB: false,
-    whitelistClient: false,
-    whitelistMethod: false,
-    whitelistHTTP: false
   }
 }
 
@@ -115,14 +119,6 @@ var instanceProto = function (user) {
   }
   return self;
 }
-
-var httpArray = [
-  'http',
-  'get',
-  'post',
-  'put',
-  'delete'
-]
 
 if (Meteor.isClient) {
   Meteor.startup(function () {
