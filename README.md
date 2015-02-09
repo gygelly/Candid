@@ -24,6 +24,19 @@ Can.do({
 })
 ```
 
+## (Can)did: Full access logging
+
+You should have known this was coming..
+
+TODO: not implemented
+
+```js
+Can.did = function () {
+  //stuff here
+}
+
+```
+
 ### helpers
 
 ```js
@@ -132,17 +145,3 @@ while I don't recommend it, it is available to you.
 #### Can.settings.whitelistHTTP = false
 not implemented
 
-
-
-### did
-
-full access logging
-
-TODO: not implemented
-
-```js
-Can.did = function () {
-  //stuff here
-}
-
-```
