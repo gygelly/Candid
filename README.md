@@ -45,7 +45,6 @@ Can.can( 'action', subject )
 //active authentication, returns boolean
 
 /*** client, method, rest, get, post, put, delete ***/
-
 Can.authorized( 'action', 'subject' ) 
 //routing/method authentication, returns boolean
 ```
@@ -86,7 +85,7 @@ Can.authorized( 'action', 'subject' )
 
 * Methods! (via `_.wrap`, dependent on `this.connection`, server calls will not fire authorize)
 * Automatically generate allow/deny for collections
-* TODO: use _getCollectionName() for findOne
+* use _getCollectionName() for findOne
 * Routing
 
 ### Routes
@@ -95,7 +94,7 @@ Router.plugin('candidHook');
 
 Currently it throws a permission denied exception if no rules passed.
 
-TODO: add an optional redirect to permission denied
+TODO: add an optional redirect to permission denied template
 
 ### Whitelisting 
 
