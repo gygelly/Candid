@@ -28,18 +28,19 @@ Can.do({
 
 ```js
 /*** insert, read, update, remove ***/
-Can.can( 'action', target )
+Can.can( 'action', subject )
 //active authentication, returns boolean
 
-//TODO: currently this will always fail: I still have not yet added the helper _getCollectionName to collection instances.
+//TODO: currently this will always fail: I still have not yet added the helper 
+//_getCollectionName to collection instances.
 
 
 /*** client, method, rest, get, post, put, delete ***/
 
-Can.authorize( 'action', target ) 
+Can.authorize( 'action', 'subject' ) 
 //authorization, throws exception on failure
 
-Can.authorized( 'action', target ) 
+Can.authorized( 'action', 'subject' ) 
 //routing/method authentication, returns boolean
 ```
 
@@ -51,10 +52,6 @@ Can.authorized( 'action', target )
   ...
 {{/if}}
 
-{{#if cannot 'action' target}}
-  ...
-{{/if}}
-
 {{#if authorized 'action' target}}
   ...
 {{/if}}
@@ -62,8 +59,6 @@ Can.authorized( 'action', target )
 ```
 
 ### actions
-
-TODO: limit actions to the following list
 
 * can/cannot
   * db
@@ -81,13 +76,11 @@ TODO: limit actions to the following list
   * put
   * delete
 
-### targets
+### subjects
 
 * Methods! (via `_.wrap`, dependent on `this.connection`, server calls will not fire authorize)
-* TODO: gen allow/deny 
-* TODO: use _getCollectionName() for cursors
+* Automatically generate allow/deny for collections
 * TODO: use _getCollectionName() for findOne
-* TODO: use _name for Collections
 * TODO: Routing
 
 ### Routes
@@ -101,15 +94,13 @@ It should hook for each route and based on name do an optional redirect to permi
 
 TODO: all of this...
 
-If authorize throw an error, provide a way to catch this error client side
+If authorize throw an error, provide a way to catch this error client side. This is also assuming you are not using an iron:router hook.
 
 ```js
 Can.rescue = function () {
   //do something intelligent
 };
 ```
-
-ALT-IDEA: canDo could be a reactive var on the client side. You could do something like toast the error.
 
 
 ### Whitelisting 
@@ -119,22 +110,27 @@ This can include actions from other packages.
 This should be considered an extreme option and only used if you are sure you know what you are doing.
 
 
-```js
-//not implemented
-Can.settings.whitelistDB = false
+#### Can.settings.DbDeny = false
+You can whitelist your database actions by removing the `insecure` package. 
+Candid will create allows for all your db rules. 
+Because it uses allow you can circumvent Candid security by adding your own allows.
 
-//not implemented
-Can.settings.whitelistClient = false
+If you would rather candid explicitly deny set this to true.
+You will have to create your own allows for all your collections.
 
-//Method whitelisting may cause problems with other packages or even meteor core.
-//Depending on package load order expect results to be unpredictable.
-//Only methods defined after this package will be whitelisted (I think...)
-//while I don't recommend it, it is available to you.
-Can.settings.whitelistMethod = false
+Candid will **only** crate denies the rules (dos) you have defined.
 
-//not implemented
-Can.settings.whitelistHTTP = false
-```
+#### Can.settings.whitelistClient = false
+not implemented
+
+#### Can.settings.whitelistMethod = false
+Method whitelisting may cause problems with other packages or even meteor core.
+Depending on package load order expect results to be unpredictable.
+Only methods defined after this package will be whitelisted (I think...)
+while I don't recommend it, it is available to you.
+
+#### Can.settings.whitelistHTTP = false
+not implemented
 
 
 
