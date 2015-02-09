@@ -44,10 +44,6 @@ Can.did = function () {
 Can.can( 'action', subject )
 //active authentication, returns boolean
 
-//TODO: currently this will always fail: I still have not yet added the helper 
-//_getCollectionName to collection instances.
-
-
 /*** client, method, rest, get, post, put, delete ***/
 
 Can.authorized( 'action', 'subject' ) 
