@@ -118,7 +118,7 @@ Because it uses allow you can circumvent Candid security by adding your own allo
 If you would rather candid explicitly deny set this to true.
 You will have to create your own allows for all your collections.
 
-Candid will **only** crate denies the rules (dos) you have defined.
+Candid will **only** create deny for the rules (dos) you have defined.
 
 #### Can.settings.whitelistClient = false
 not implemented
