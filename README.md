@@ -24,7 +24,7 @@ Can.do({
 })
 ```
 
-## (Can)did: Full access logging
+### (Can)did: Full access logging
 
 You should have known this was coming..
 

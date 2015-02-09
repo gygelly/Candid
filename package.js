@@ -5,15 +5,18 @@ Package.describe({
 
 Package.on_use(function (api) {
    api.use(['underscore', 'dburles:mongo-collection-instances']);
+
+   api.use('iron:router', ['client', 'server'], {weak: true});
    
    api.add_files([
-    'lib/can.js', 
     'lib/rules.js',
+    'lib/can.js', 
     'lib/startup.js',
-    'lib/methods.js'
+    'lib/methods.js',
+    'lib/iron:router.js'
   ]);
 
-   api.export(['Can', 'can', 'cannot']);
+   api.export(['Can']);
 });
 
 Package.on_test(function (api) {
