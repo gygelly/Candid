@@ -5,6 +5,15 @@ This is a work in progress and is not tested but it is usable.
 
 This is a Candid permissions layer for Meteor JS, inspired by Rails CanCan but adapted to Meteor!
 
+What you get for free:
+* Automatically generate allow/deny for collections 
+* js and html helpers
+* Methods! (via `_.wrap`, dependent on `this.connection`, server calls will not fire authorize)
+* (iron) Routing control
+* user access logging (implement your own solution)
+
+## API
+
 ### Rules: the dos 
 
 Define once (lib) do anywhere
@@ -23,21 +32,25 @@ Can.do({
   }
 })
 ```
+#### actions
 
-### (Can)did: Full access logging
+* can/cannot
+  * db
+  * insert
+  * read
+  * update
+  * remove
 
-You should have known this was coming..
+* authorize/authorized
+  * client
+  * method
+  * http
+  * get
+  * post
+  * put
+  * delete
 
-TODO: not implemented
-
-```js
-Can.did = function () {
-  //stuff here
-}
-
-```
-
-### helpers
+### Can.can and Can.authorized helpers
 
 ```js
 /*** insert, read, update, remove ***/
@@ -61,30 +74,19 @@ Can.authorized( 'action', 'subject' )
 
 ```
 
-### actions
+### Can.did: Full access logging
 
-* can/cannot
-  * db
-  * insert
-  * read
-  * update
-  * remove
+You should have known this was coming...
 
-* authorize/authorized
-  * client
-  * method
-  * http
-  * get
-  * post
-  * put
-  * delete
+TODO: not implemented
 
-### subjects
+```js
+Can.did = function () {
+  //stuff here
+}
+```
 
-* Methods! (via `_.wrap`, dependent on `this.connection`, server calls will not fire authorize)
-* Automatically generate allow/deny for collections
-* use _getCollectionName() for findOne
-* Routing
+## Configuration
 
 ### Routes
 
