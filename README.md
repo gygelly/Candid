@@ -19,11 +19,12 @@ What you get for free:
 You can create Candid rules anywhere but I would recommend placing them all in `/lib/candid.js`.
 
 Can.do accepts an object for a rule definition. 
-Your action defines what the user can do, like a database update. 
-Your subject will ether be a string, like a method name, or a Mongo.Collection
+* Your action defines what the user can do, like a database update. 
+* Your subject will ether be a string, like a method name, or a Mongo.Collection
 (Subjects must match their actions).
-You can define a condition to limit your rule, like does post.group === 'awesome'?
-Finally you can define the user function to check user permissions [alanning:roles](https://atmospherejs.com/alanning/roles) would be useful here.  
+* You can define a condition to limit your rule, like does post.group === 'awesome'?
+* Finally you can define the user function to check user permissions 
+[alanning:roles](https://atmospherejs.com/alanning/roles) would be useful here.  
 
 ```js
 Can.do({
