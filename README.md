@@ -8,7 +8,7 @@ This is a Candid permissions layer for Meteor JS, inspired by Rails CanCan but a
 What you get for free:
 * Automatically generate allow/deny for collections 
 * js and html helpers
-* Methods! (via `_.wrap`, dependent on `this.connection`, server calls will not fire authorize)
+* Methods (via `_.wrap`, dependent on `this.connection`, server calls will not fire authorize)
 * (iron) Routing control
 * user access logging (implement your own solution)
 
@@ -90,6 +90,7 @@ Please do not PR these solutions as I will require them to be add-ons. (Unless y
 
 ```js
 /*** insert, read, update, remove ***/
+var subject = Example.findOne()
 Can.can( 'action', subject )
 //active authentication, returns boolean
 
@@ -100,11 +101,11 @@ Can.authorized( 'action', 'subject' )
 
 ```html
 
-{{#if can 'action' target condition}}
+{{#if can 'action' target}}
   ...
 {{/if}}
 
-{{#if authorized 'action' target condition}}
+{{#if authorized 'action' target}}
   ...
 {{/if}}
 
