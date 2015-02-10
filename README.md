@@ -128,7 +128,7 @@ Can.authorized( 'action', 'subject' )
 
 You should have known this was coming...
 
-TODO: not implemented
+Can.did runs after every action. You can use it to log actions as you see fit, just overload the noop with your own function.
 
 ```js
 Can.did = function () {
