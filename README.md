@@ -170,6 +170,12 @@ You will have to create your own allows for all your collections.
 
 Candid will **only** create deny for the rules (dos) you have defined.
 
+#### Can.settings.whitelistDB = true
+Database whitelisting is enabled by default. 
+This is because meteor denies DB writes if no allows pass.
+If you have your own allow/deny calls you can set this to false and if no rules applies 
+Candid will return true.
+
 #### Can.settings.whitelistClient = false
 Will catch all client routes. 
 
