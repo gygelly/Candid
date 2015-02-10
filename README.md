@@ -8,6 +8,7 @@ Candid lets you define permission rules for your database, methods, and routes.
 Candid rules are declarative, programmatic, and assertive, or you know candid. 
 
 What you get for free:
+
 * Automatically generate allow/deny for collections 
 * js and html helpers
 * Methods (via `_.wrap`, dependent on `this.connection`, server calls will not fire authorize)
@@ -21,6 +22,7 @@ What you get for free:
 You can create Candid rules anywhere but I would recommend placing them all in `/lib/candid.js`.
 
 Can.do accepts an object for a rule definition. 
+
 * Your action defines what the user can do, like a database update. 
 * Your subject will ether be a string, like a method name, or a Mongo.Collection
 (Subjects must match their actions).

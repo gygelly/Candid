@@ -1,21 +1,20 @@
 Package.describe({
-  name: 'candid',
+  name: 'kestanous:candid',
   summary: 'A candid Permissions layer for Meteor JS',
   version: "0.1.0",
-  git: "https://github.com/Meteor-Reaction/Candid.git",
-  name: 'kestanous:candid'
+  git: "https://github.com/Meteor-Reaction/Candid.git"
 });
 
 Package.on_use(function (api) {
    api.use([
-    'underscore', 
+    'underscore@1.0.2', 
     'dburles:mongo-collection-instances@0.3.1', 
-    'mongo',
+    'mongo@1.0.11',
     'dburles:collection-helpers@1.0.2',
-    'ui'
+    'ui@1.0.5' //blaze refused to accept Template.registerHelper
     ]);
 
-   api.use('iron:router', ['client', 'server'], {weak: true});
+   api.use('iron:router@1.0.0', ['client', 'server'], {weak: true});
    
    api.add_files([
     'lib/rules.js',
@@ -32,8 +31,8 @@ Package.on_use(function (api) {
 });
 
 Package.on_test(function (api) {
-  api.use('candid');
+  api.use('kestanous:candid');
   api.use('tinytest');
   
-  api.add_files('can-do_tests.js');
+  api.add_files('candid_tests.js');
 });
