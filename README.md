@@ -5,7 +5,7 @@ This is a work in progress and is not tested but it is usable.
 
 This is a Candid permissions layer for Meteor JS, inspired by Rails CanCan but adapted to Meteor! 
 Candid lets you define permission rules for your database, methods, and routes.
-Candid rules are declarative, programmatic, and assertive, or you know candid. 
+Candid rules are declarative, programmatic, and assertive, or you know... candid. 
 
 What you get for free:
 
@@ -134,7 +134,7 @@ TODO: not implemented
 Can.did = function () {
   this.action //the action attempted 
   this.subject //the subject name (collection name for DB) 
-  this.condition //the given conditions (collection object for DB) 
+  this.conditions //the given conditions (collection object for DB) 
   this.user //the user if available 
   this.success //true if the action was allowed by any rules
 }
