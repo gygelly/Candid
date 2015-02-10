@@ -1,7 +1,7 @@
 Package.describe({
   name: 'kestanous:candid',
   summary: 'A candid Permissions layer for Meteor JS',
-  version: "0.1.3",
+  version: "0.1.4",
   git: "https://github.com/Meteor-Reaction/Candid.git"
 });
 
