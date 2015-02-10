@@ -32,7 +32,14 @@ Package.on_use(function (api) {
 
 Package.on_test(function (api) {
   api.use('kestanous:candid');
-  api.use('tinytest');
+  api.use([
+    'accounts-base',
+    'tinytest',
+    'tracker',
+    'mongo',
+    'underscore',
+    'tinytest'
+    ]);
   
   api.add_files('candid_tests.js');
 });
