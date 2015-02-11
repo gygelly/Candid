@@ -44,6 +44,7 @@ Package.on_test(function (api) {
   
   api.add_files([
     'tests/database.js',
-    'tests/router.js'
+    'tests/router.js',
+    'tests/methods.js'
     ]);
 });

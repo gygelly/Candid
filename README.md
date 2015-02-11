@@ -146,7 +146,7 @@ Can.did = function () {
 
 If you want iron:router to enforce your route access you will need to add the plugin.
 Load order is important! You must define this after you declare all your routing rules.
-I would place this at the bottom of a '/lib/candid.js' file.
+I would place this at the bottom of a `/lib/candid.js` file.
 
 ###### NOTE: This depends on iron:router.
 
@@ -160,8 +160,8 @@ Option:
 }
 ```
 If both options are defined it will render a template, 
-if neither are defined it will throw a "permission-denied' error. 
-Server routes always throw 'permission-denied' errors.
+if neither are defined it will throw a "permission-denied" error. 
+Server routes always throw "permission-denied" errors.
 
 TODO: find a way to reactively update the plugin options (e.g. {only: ['your routes']})
 
