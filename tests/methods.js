@@ -23,9 +23,9 @@ Tinytest.add('candid - do method with args', function (test) {
     action: 'method', 
     subject: 'method2',
     condition: function (a, b) {
-      return a && b;
+      return a === 'a' && b === 'b';
     }
   })
 
-  test.isTrue(Can.authorized('method', 'method2', [true, true]))
+  test.isTrue(Can.authorized('method', 'method2', ['a', 'b']))
 });
