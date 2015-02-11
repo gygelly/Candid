@@ -144,15 +144,26 @@ Can.did = function () {
 
 ### Routes
 
+If you want iron:router to enforce your route access you will need to add the plugin.
+Load order is important! You must define this after you declare all your routing rules.
+I would place this at the bottom of a '/lib/candid.js' file.
 
-###### NOTE: This depends on iron:router. If iron:router is not present no actions will be taken.
+###### NOTE: This depends on iron:router.
 
 `Router.plugin('candidHook', options);`
 
-Currently there is only one option: `permissionDeniedTemplate: 'permissionDenied'`
-If the permissionDeniedTemplate template is defined it will render it on failed client routes.
-If it is not defined it will throw a "permission-denied' error. 
+Option: 
+```
+{
+  permissionDeniedTemplate: 'PermissionDenied', //render a template
+  permissionDeniedRoute: '/permissionDenied' //redirect to a route
+}
+```
+If both options are defined it will render a template, 
+if neither are defined it will throw a "permission-denied' error. 
 Server routes always throw 'permission-denied' errors.
+
+TODO: find a way to reactively update the plugin options (e.g. {only: ['your routes']})
 
 ### Whitelisting 
 

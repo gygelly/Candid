@@ -1,7 +1,7 @@
 Package.describe({
   name: 'kestanous:candid',
   summary: 'A candid Permissions layer for Meteor JS',
-  version: "0.1.4",
+  version: "0.1.5",
   git: "https://github.com/Meteor-Reaction/Candid.git"
 });
 
@@ -38,8 +38,12 @@ Package.on_test(function (api) {
     'tracker',
     'mongo',
     'underscore',
-    'tinytest'
+    'tinytest',
+    'iron:router'
     ]);
   
-  api.add_files('candid_tests.js');
+  api.add_files([
+    'tests/database.js',
+    'tests/router.js'
+    ]);
 });
