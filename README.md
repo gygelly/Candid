@@ -1,8 +1,6 @@
 Candid
 ===============
 
-This is a work in progress and is not tested but it is usable.
-
 This is a Candid permissions layer for Meteor JS, inspired by Rails CanCan but adapted to Meteor! 
 Candid lets you define permission rules for your database, methods, and routes.
 Candid rules are declarative, programmatic, and assertive, or you know... candid. 
