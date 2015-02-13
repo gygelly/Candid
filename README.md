@@ -1,9 +1,7 @@
 Candid
 ===============
 
-This is a work in progress and is not tested but it is usable.
-
-This is a Candid permissions layer for Meteor JS, inspired by Rails CanCan but adapted to Meteor! 
+This is a Candid user permissions layer for Meteor JS, inspired by Rails CanCan but adapted to Meteor! 
 Candid lets you define permission rules for your database, methods, and routes.
 Candid rules are declarative, programmatic, and assertive, or you know... candid. 
 
@@ -199,3 +197,8 @@ while I don't recommend it, it is available to you.
 #### Can.settings.whitelistHTTP = false
 Will catch all HTTP routes with method == ['get', 'post', 'put', 'delete']
 
+
+## Tests
+
+Currently Candid is tested with tinytest. 
+Run `meteor tests-packages /path/to/candid/clone` to see them for yourself.
