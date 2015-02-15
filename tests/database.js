@@ -18,11 +18,11 @@ testObj = {
 };
 
 Tinytest.add('candid - do db', function (test) {
-  Can._distroyAllRules()
+  Can._destroyAllRules()
   setName('test1')
 
   Can.do({
-    action: 'db', 
+    action: 'db',
     subject: Tests
   })
 
@@ -44,11 +44,11 @@ Tinytest.add('candid - do db', function (test) {
 });
 
 Tinytest.add('candid - do db insert', function (test) {
-  Can._distroyAllRules()
+  Can._destroyAllRules()
   setName('test2')
 
   Can.do({
-    action: 'insert', 
+    action: 'insert',
     subject: Tests
   })
 
@@ -70,11 +70,11 @@ Tinytest.add('candid - do db insert', function (test) {
 });
 
 Tinytest.add('candid - do db read', function (test) {
-  Can._distroyAllRules()
+  Can._destroyAllRules()
   setName('test3')
 
   Can.do({
-    action: 'read', 
+    action: 'read',
     subject: Tests
   })
 
@@ -96,11 +96,11 @@ Tinytest.add('candid - do db read', function (test) {
 });
 
 Tinytest.add('candid - do db update', function (test) {
-  Can._distroyAllRules()
+  Can._destroyAllRules()
   setName('test4')
 
   Can.do({
-    action: 'update', 
+    action: 'update',
     subject: Tests
   })
 
@@ -122,11 +122,11 @@ Tinytest.add('candid - do db update', function (test) {
 });
 
 Tinytest.add('candid - do db remove', function (test) {
-  Can._distroyAllRules()
+  Can._destroyAllRules()
   setName('test5')
 
   Can.do({
-    action: 'remove', 
+    action: 'remove',
     subject: Tests
   })
 
@@ -148,7 +148,7 @@ Tinytest.add('candid - do db remove', function (test) {
 });
 
 Tinytest.add('candid - do db none', function (test) {
-  Can._distroyAllRules()
+  Can._destroyAllRules()
   setName('test6')
 
   test.isFalse(Can.can('db', Tests))
