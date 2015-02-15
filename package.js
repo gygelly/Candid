@@ -1,7 +1,7 @@
 Package.describe({
   name: 'kestanous:candid',
   summary: 'A candid permissions layer for users and guests',
-  version: "0.2.0",
+  version: "0.2.1",
   git: "https://github.com/Meteor-Reaction/Candid.git"
 });
 
