@@ -1,16 +1,15 @@
 Package.describe({
   name: 'kestanous:candid',
   summary: 'A candid permissions layer for users and guests',
-  version: "0.2.1",
+  version: "0.3.0-dev",
   git: "https://github.com/Meteor-Reaction/Candid.git"
 });
 
 Package.on_use(function (api) {
    api.use([
     'underscore@1.0.2', 
-    'dburles:mongo-collection-instances@0.3.1', 
     'mongo@1.0.11',
-    'dburles:collection-helpers@1.0.2',
+    'mreaction:shadow-describer@0.1.0', 
     'ui@1.0.5' //blaze refused to accept Template.registerHelper
     ]);
 
@@ -22,8 +21,6 @@ Package.on_use(function (api) {
     'lib/startup.js',
     'lib/methods.js',
     'lib/iron:router.js',
-    'temp.js',
-    'lib/database.js',
     'lib/htmlHelpers.js'
   ]);
 
